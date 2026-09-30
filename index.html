@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flowday — a calm, focused todo list." />
+  <title>Flowday — your focused list</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Flowday home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>flowday</span>
+      </a>
+
+      <div class="date-card">
+        <span id="weekday">Tuesday</span>
+        <strong id="dateNumber">30</strong>
+        <small id="monthYear">September 2026</small>
+      </div>
+
+      <nav class="nav-list" aria-label="Task views">
+        <button class="nav-item active" data-filter="today"><span>◉</span> Today <b id="todayCount">0</b></button>
+        <button class="nav-item" data-filter="upcoming"><span>◌</span> Upcoming <b id="upcomingCount">0</b></button>
+        <button class="nav-item" data-filter="completed"><span>✓</span> Completed <b id="completedCount">0</b></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="energy-label"><span>Your momentum</span><b id="momentumText">0%</b></div>
+        <div class="progress-track"><span id="momentumBar"></span></div>
+        <p id="momentumMessage">A clear list is a clear mind.</p>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">A little progress, every day</p>
+          <h1 id="viewTitle">Today’s focus</h1>
+        </div>
+        <button class="icon-button" id="themeToggle" aria-label="Toggle night mode" title="Toggle night mode">☾</button>
+      </header>
+
+      <section class="focus-card" id="focusCard">
+        <div class="focus-copy">
+          <p class="eyebrow">ONE THING AT A TIME</p>
+          <h2 id="focusTask">Choose your next meaningful step.</h2>
+          <p id="focusMeta">Add a task, then pin it here to make room for focus.</p>
+        </div>
+        <button class="focus-action" id="completeFocus" aria-label="Complete focus task">✓</button>
+      </section>
+
+      <section class="composer" aria-label="Add a task">
+        <form id="taskForm">
+          <span class="plus">+</span>
+          <input id="taskInput" type="text" placeholder="What deserves your attention?" autocomplete="off" maxlength="100" required />
+          <select id="taskTag" aria-label="Task category">
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Creative">Creative</option>
+            <option value="Errand">Errand</option>
+          </select>
+          <button type="submit">Add task <span>↵</span></button>
+        </form>
+      </section>
+
+      <div class="list-heading">
+        <div><span id="taskCount">0 tasks</span><span class="dot">•</span><span id="listHint">keep moving gently</span></div>
+        <button id="clearCompleted" class="text-button">Clear finished</button>
+      </div>
+
+      <ul id="taskList" class="task-list" aria-live="polite"></ul>
+      <div id="emptyState" class="empty-state" hidden>
+        <div class="empty-orbit">✦</div>
+        <h2>Nothing pulling at you.</h2>
+        <p>Enjoy the open space, or add the next small thing.</p>
+      </div>
+      <footer class="app-footer">Built by Omoyeni</footer>
+    </section>
+  </main>
+  <template id="taskTemplate">
+    <li class="task-item">
+      <button class="check" aria-label="Mark task complete"></button>
+      <div class="task-content">
+        <p class="task-title"></p>
+        <div class="task-details"><span class="tag"></span><span class="task-date"></span></div>
+      </div>
+      <button class="pin-button" aria-label="Make this your focus" title="Make this your focus">⌁</button>
+      <button class="delete-button" aria-label="Delete task" title="Delete task">×</button>
+    </li>
+  </template>
+  <script src="js/app.js"></script>
+</body>
+</html>
